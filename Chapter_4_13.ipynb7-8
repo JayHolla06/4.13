@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMhP87FzhQdpDU5OyBituVN",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JayHolla06/4.13/blob/main/Chapter_4_13.ipynb7-8\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# List of sandwich orders\n",
+        "sandwich_orders = [\"tuna\", \"chicken\", \"grilled cheese\", \"BLT\", \"veggie\"]\n",
+        "\n",
+        "# Empty list for finished sandwiches\n",
+        "finished_sandwiches = []\n",
+        "\n",
+        "# Loop through sandwich orders\n",
+        "while sandwich_orders:\n",
+        "    current_sandwich = sandwich_orders.pop(0)\n",
+        "    print(f\"I made your {current_sandwich} sandwich.\")\n",
+        "    finished_sandwiches.append(current_sandwich)\n",
+        "\n",
+        "# Print all finished sandwiches\n",
+        "print(\"\\nSandwiches made:\")\n",
+        "for sandwich in finished_sandwiches:\n",
+        "    print(sandwich)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WPOU-jjgjaUC",
+        "outputId": "f528c20f-17e5-459c-9443-012a4419c4c4"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "I made your tuna sandwich.\n",
+            "I made your chicken sandwich.\n",
+            "I made your grilled cheese sandwich.\n",
+            "I made your BLT sandwich.\n",
+            "I made your veggie sandwich.\n",
+            "\n",
+            "Sandwiches made:\n",
+            "tuna\n",
+            "chicken\n",
+            "grilled cheese\n",
+            "BLT\n",
+            "veggie\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
