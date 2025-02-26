@@ -1,0 +1,151 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNHW+gIghSbImmdK8kHdEy6",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JayHolla06/4.13/blob/main/HangmanGame\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Gpc8M-Mek3zK",
+        "outputId": "81948a92-ad81-4f14-a604-b8af55034655"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Welcome to Hangman!\n",
+            "\n",
+            "Word: ___________\n",
+            "Tries left: 6\n",
+            "Guessed letters: \n",
+            "Guess a letter: p\n",
+            "\n",
+            "Word: p__________\n",
+            "Tries left: 6\n",
+            "Guessed letters: p\n",
+            "Guess a letter: y\n",
+            "Wrong guess! 'y' is not in the word.\n",
+            "\n",
+            "Word: p__________\n",
+            "Tries left: 5\n",
+            "Guessed letters: p, y\n",
+            "Guess a letter: r\n",
+            "\n",
+            "Word: pr__r______\n",
+            "Tries left: 5\n",
+            "Guessed letters: p, r, y\n",
+            "Guess a letter: g\n",
+            "\n",
+            "Word: pr_gr_____g\n",
+            "Tries left: 5\n",
+            "Guessed letters: g, p, r, y\n",
+            "Guess a letter: o\n",
+            "\n",
+            "Word: progr_____g\n",
+            "Tries left: 5\n",
+            "Guessed letters: g, o, p, r, y\n",
+            "Guess a letter: m\n",
+            "\n",
+            "Word: progr_mm__g\n",
+            "Tries left: 5\n",
+            "Guessed letters: g, m, o, p, r, y\n",
+            "Guess a letter: a\n",
+            "\n",
+            "Word: programm__g\n",
+            "Tries left: 5\n",
+            "Guessed letters: a, g, m, o, p, r, y\n",
+            "Guess a letter: i\n",
+            "\n",
+            "Word: programmi_g\n",
+            "Tries left: 5\n",
+            "Guessed letters: a, g, i, m, o, p, r, y\n",
+            "Guess a letter: j\n",
+            "Wrong guess! 'j' is not in the word.\n",
+            "\n",
+            "Word: programmi_g\n",
+            "Tries left: 4\n",
+            "Guessed letters: a, g, i, j, m, o, p, r, y\n",
+            "Guess a letter: n\n",
+            "\n",
+            "Congratulations! You guessed the word: programming\n"
+          ]
+        }
+      ],
+      "source": [
+        "import random\n",
+        "\n",
+        "def choose_word():\n",
+        "    words = ['python', 'hangman', 'programming', 'developer', 'computer']\n",
+        "    return random.choice(words)\n",
+        "\n",
+        "def display_word(word, guessed_letters):\n",
+        "    displayed = ''.join([letter if letter in guessed_letters else '_' for letter in word])\n",
+        "    return displayed\n",
+        "\n",
+        "def hangman():\n",
+        "    print(\"Welcome to Hangman!\")\n",
+        "    word = choose_word()\n",
+        "    guessed_letters = set()\n",
+        "    tries = 6  # Number of incorrect guesses allowed\n",
+        "\n",
+        "    while tries > 0:\n",
+        "        print(f\"\\nWord: {display_word(word, guessed_letters)}\")\n",
+        "        print(f\"Tries left: {tries}\")\n",
+        "        print(f\"Guessed letters: {', '.join(sorted(guessed_letters))}\")\n",
+        "\n",
+        "        guess = input(\"Guess a letter: \").lower()\n",
+        "\n",
+        "        if len(guess) != 1 or not guess.isalpha():\n",
+        "            print(\"Please enter a valid single letter.\")\n",
+        "            continue\n",
+        "\n",
+        "        if guess in guessed_letters:\n",
+        "            print(\"You already guessed that letter.\")\n",
+        "            continue\n",
+        "\n",
+        "        guessed_letters.add(guess)\n",
+        "\n",
+        "        if guess not in word:\n",
+        "            tries -= 1\n",
+        "            print(f\"Wrong guess! '{guess}' is not in the word.\")\n",
+        "\n",
+        "        if all(letter in guessed_letters for letter in word):\n",
+        "            print(f\"\\nCongratulations! You guessed the word: {word}\")\n",
+        "            break\n",
+        "    else:\n",
+        "        print(f\"\\nGame over! The word was: {word}\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    hangman()"
+      ]
+    }
+  ]
+}
